@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f0e5">
+    <title>Outpost Notes — a Moonbase Mission Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="Moonbase Outpost Notes home">
+                <span class="brand-mark">✦</span>
+                <span>MOONBASE <b>· OUTPOST NOTES</b></span>
+            </a>
+            <span class="training-pill"><i></i> practice run</span>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">A little lunar field guide</p>
+                    <h1>Can your crew<br><span>make it home?</span></h1>
+                    <p class="intro">
+                        Five days at a Moon outpost. Make a plan each day, look after your crew,
+                        and see what your choices change.
+                    </p>
+                    <div class="mission-meta">
+                        <span>◉ <b>Moon · South Pole</b></span>
+                        <span>◷ <b>5 sols</b></span>
+                        <span>♙ <b>4 crew members</b></span>
+                    </div>
+                </div>
+
+                <div class="moon-scene" aria-hidden="true">
+                    <div class="star s1">✦</div>
+                    <div class="star s2">·</div>
+                    <div class="star s3">✧</div>
+                    <div class="moon"></div>
+                    <div class="ridge ridge-back"></div>
+                    <div class="ridge ridge-front"></div>
+                    <div class="base">
+                        <div class="antenna"></div>
+                        <div class="dome"><span></span></div>
+                        <div class="module"></div>
+                        <div class="solar-array"><i></i><i></i><i></i><i></i></div>
+                    </div>
+                    <div class="scene-caption">Shackleton crater · concept sketch</div>
+                </div>
+            </section>
+
+            <section class="dashboard" aria-label="Mission dashboard">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">A quick look outside</p>
+                        <h2>Today at the outpost</h2>
+                    </div>
+                    <div class="sol-counter">
+                        <span id="solLabel">Sol 1 of 5</span>
+                        <div class="dots" id="solDots" aria-label="Mission progress"></div>
+                    </div>
+                </div>
+                <div class="resource-grid" id="resourceGrid"></div>
+            </section>
+
+            <section class="play-area">
+                <div class="decision-panel">
+                    <div class="section-heading compact">
+                        <div>
+                            <p class="eyebrow">Your turn</p>
+                            <h2 id="decisionTitle">Choose a plan for Sol 1</h2>
+                        </div>
+                        <span class="pick-label">one plan</span>
+                    </div>
+                    <p class="decision-hint">
+                        Your crew uses supplies every sol, whichever plan you pick.
+                        What needs attention today?
+                    </p>
+                    <div class="choice-grid" id="choiceGrid"></div>
+                    <button class="primary-button" id="deployButton" disabled>
+                        Choose a plan to continue <span>→</span>
+                    </button>
+                </div>
+
+                <aside class="signal-panel">
+                    <div class="signal-head">
+                        <span class="signal-icon">⌁</span>
+                        <span class="eyebrow">A note from mission control</span>
+                    </div>
+                    <h3 id="signalTitle">A new crew, a big job</h3>
+                    <p id="signalText">
+                        Your outpost is ready. Keep an eye on power, oxygen, food, and your
+                        storm shelter. No single resource can save the mission by itself.
+                    </p>
+                    <div class="alert-chip" id="alertChip">All quiet for now</div>
+                    <div class="signal-divider"></div>
+                    <p class="learn-label">One real thing to know</p>
+                    <p class="fact" id="factText">
+                        On the Moon, a night can last about 14 Earth days. That makes storing
+                        power a serious planning problem.
+                    </p>
+                    <a class="source-link" id="sourceLink"
+                       href="https://science.nasa.gov/wp-content/uploads/2024/01/lrolitho7temperaturevariation27may2014.pdf"
+                       target="_blank" rel="noreferrer">NASA · Lunar day and night ↗</a>
+                </aside>
+            </section>
+
+            <section class="log-panel">
+                <div class="section-heading compact">
+                    <div>
+                        <p class="eyebrow">Crew notebook</p>
+                        <h2>What happened</h2>
+                    </div>
+                    <button class="text-button" id="restartButton">Start a new mission ↻</button>
+                </div>
+                <div class="log-list" id="logList" aria-live="polite">
+                    <div class="log-empty">Your crew's story will appear here after the first plan.</div>
+                </div>
+            </section>
+
+            <footer>
+                <span>A small game for curious minds · ages 7–12</span>
+                <span>Game numbers are made up; NASA facts have sources</span>
+            </footer>
+        </main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="endModal" role="dialog"
+         aria-modal="true" aria-labelledby="endTitle">
+        <div class="end-card">
+            <div class="end-orbit">✦</div>
+            <p class="eyebrow">Mission debrief</p>
+            <h2 id="endTitle">You brought your crew home!</h2>
+            <p id="endMessage"></p>
+            <button class="primary-button" id="playAgain">
+                Fly another mission <span>↻</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
